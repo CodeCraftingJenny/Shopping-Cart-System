@@ -10,6 +10,13 @@ User Stories
 - As a customer, I want to choose the size and color of the selected item. 
 - As a customer, I want to add text or upload a simple picture to be stitched onto the selected clothing item. 
 - As a customer, I want to preview the customization before confirming the order. 
-- As a customer, I want to be able to order multiple items
+- As a customer, I want to be able to order multiple items, add items into the shopping cart 
+- As a customer, I want to be able to view the items in my cart
+
+- As the owner, I want to view the details of each order, including customization requirements (what item, what customization) and customer information(name, address). 
+- As the owner, I want to change the status order as "in progress" when I start customizing. 
+- As the owner, I want to change the status as "completed" when the customization is finished. 
+- As the owner, I want to send a notification to the customer when their order is ready for pick up or out for delivery.
+
 
 An example of text with **bold** and *italic* fonts.  
