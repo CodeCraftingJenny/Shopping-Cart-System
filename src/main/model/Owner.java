@@ -28,6 +28,7 @@ public class Owner {
         return status;
     }
 
+    //REQUIRES: customer must have completed an order
     //MODIFIES: this
     //EFFECTS: sends notification to customer about order status
     public String sendNotification(String message) {

@@ -83,6 +83,13 @@ public class CustomerTest {
     }
 
     @Test
+    public void testCartIsEmptyFalse(){
+        customer.addToCart(hoodie);
+        assertEquals(1, customer.getTotalNumberItemsOrdered());
+        assertFalse(customer.cartIsEmpty());
+    }
+
+    @Test
     public void getTotal() {
         customer.addToCart(hoodie);
         customer.addToCart(hoodie);

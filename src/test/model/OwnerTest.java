@@ -54,7 +54,7 @@ public class OwnerTest {
     }
 
     @Test
-    public void testSendNotification(){
+    public void testSendNotificationIP(){
         customer.addToCart(hoodie);
         customer.addToCart(beanie);
         customer.addToCart(shirt);
@@ -66,5 +66,23 @@ public class OwnerTest {
         assertFalse(cart.contains(beanie));
         assertEquals (owner.setStatus("in progress"), owner.getStatus());
         assertEquals(owner.sendNotification("in progress"), "I am making your order.");
+    }
+
+    @Test
+    public void testSendNotificationIT(){
+        assertEquals (owner.setStatus("in transit"), owner.getStatus());
+        assertEquals(owner.sendNotification("in transit"), "I have sent your order to the post office.");
+    }
+
+    @Test
+    public void testSendNotificationC(){
+        assertEquals (owner.setStatus("completed"), owner.getStatus());
+        assertEquals(owner.sendNotification("completed"), "Your order has been delivered, thank you for shopping with us.");
+    }
+
+    @Test
+    public void testSendNotificationNone(){
+        assertEquals (owner.setStatus(""), owner.getStatus());
+        assertEquals(owner.sendNotification(""), "Order has been received");
     }
 }
