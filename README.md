@@ -8,10 +8,10 @@ User Stories
 
 - As a customer, I want to browse and select from a range of customizable clothing items such as sweaters, hoodies, t-shirts, and tote bags. 
 - As a customer, I want to choose the size and color of the selected item. 
-- As a customer, I want to add text or upload a simple picture to be stitched onto the selected clothing item. 
-- As a customer, I want to preview the customization before confirming the order. 
-- As a customer, I want to be able to order multiple items, add items into the shopping cart 
-- As a customer, I want to be able to view the items in my cart
+- As a customer, I want to be able to order multiple items, add items, remove items from my shopping cart 
+- As a customer, I want to be able to view the items and the total amount in my cart
+
+- As a customer, I want to add text to be embroidered onto the selected clothing item.
 
 - As the owner, I want to view the details of each order, including customization requirements (what item, what customization) and customer information(name, address). 
 - As the owner, I want to change the status order

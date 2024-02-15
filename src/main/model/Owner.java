@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Owner {
@@ -12,12 +13,6 @@ public class Owner {
         this.name = name;
     }
 
-    //REQUIRES: customer must not have an empty cart
-    //EFFECTS: see items that are in customer's cart
-    public List<Clothing> viewCustomerOrder(Customer customer) {
-        return customer.viewCart();
-    }
-
     //MODIFIES: this
     //EFFECTS: changes status of order to either in progress, in transit, completed
     public String setStatus(String status) {
@@ -26,6 +21,12 @@ public class Owner {
 
     public String getStatus() {
         return status;
+    }
+
+    //REQUIRES: customer must not have an empty cart
+    //EFFECTS: see items that are in customer's cart
+    public List<Clothing> viewCustomerOrder(Customer customer) {
+        return customer.viewCart();
     }
 
     //REQUIRES: customer must have completed an order

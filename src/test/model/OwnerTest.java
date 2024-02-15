@@ -21,9 +21,9 @@ public class OwnerTest {
         owner = new Owner("JJ");
         customer = new Customer("Kari");
         cart = new ArrayList<>();
-        hoodie = new Clothing("HOODIE", "BLUE", 'S', 30.00);
-        beanie = new Clothing("BEANIE", "RED", 'L', 10.00);
-        shirt = new Clothing("SHIRT", "WHITE", 'M', 15.00);
+        hoodie = new Clothing("HOODIE", "BLUE", 'S');
+        beanie = new Clothing("BEANIE", "RED", 'L');
+        shirt = new Clothing("SHIRT", "WHITE", 'M');
     }
 
     @Test

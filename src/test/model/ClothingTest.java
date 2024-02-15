@@ -13,9 +13,9 @@ class ClothingTest {
 
     @BeforeEach
     public void setUp() {
-        hoodie = new Clothing("HOODIE", "BLUE", 'S', 30.00);
-        beanie = new Clothing("BEANIE", "RED", 'L', 10.00);
-        shirt = new Clothing("SHIRT", "WHITE", 'M', 15.00);
+        hoodie = new Clothing("hoodie", "BLUE", 'S');
+        beanie = new Clothing("beanie", "RED", 'L');
+        shirt = new Clothing("shirt", "WHITE", 'M');
     }
 
     @Test

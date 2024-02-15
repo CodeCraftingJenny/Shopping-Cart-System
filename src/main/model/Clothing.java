@@ -7,13 +7,28 @@ public class Clothing {
     private double price;
     private String colour;
 
-
     // Creates a clothing item that customer can customize and purchase
-    public Clothing(String nameOfItem, String colour, Character size, double price) {
+    public Clothing(String nameOfItem, String colour, Character size) {
         this.nameOfItem = nameOfItem;
         this.size = size;
-        this.price = price;
         this.colour = colour;
+        switch (nameOfItem) {
+            case "hoodie":
+                this.price = 50.00;
+                break;
+            case "cap":
+                this.price = 15.00;
+                break;
+            case "beanie":
+                this.price = 15.00;
+                break;
+            case "totebag":
+                this.price = 10.00;
+                break;
+            default:
+                this.price = 0.0;
+                break;
+        }
     }
 
     public Character getSize() {
@@ -25,14 +40,11 @@ public class Clothing {
     }
 
     public String getNameOfItem() {
-
         return this.nameOfItem;
     }
 
     public double getPrice() {
-        return this.price;
+        return price;
     }
-
-
 
 }
