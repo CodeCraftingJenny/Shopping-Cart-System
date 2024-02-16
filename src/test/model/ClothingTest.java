@@ -11,12 +11,14 @@ class ClothingTest {
     private Clothing hoodie;
     private Clothing beanie;
     private Clothing cap;
+    private Clothing totebag;
 
     @BeforeEach
     public void setUp() {
         hoodie = new Clothing("hoodie", "black", 'S');
         beanie = new Clothing("beanie", "white", 'L');
         cap = new Clothing("cap", "black", 'M');
+        totebag = new Clothing("totebag", "black", 'M');
 
     }
 
@@ -38,6 +40,25 @@ class ClothingTest {
     @Test
     public void getPrice(){
         assertEquals(cap.getPrice(), 15.00);
+    }
+
+    @Test
+    public void getPriceHoodie(){
+        assertEquals(totebag.getPrice(), 10.00);
+    }
+
+    @Test
+    public void setSizeTestM(){
+        assertEquals(hoodie.getSize(), 'S');
+        hoodie.setSize('M');
+        assertEquals(hoodie.getSize(), 'M');
+    }
+
+    @Test
+    public void setSizeTestL(){
+        assertEquals(hoodie.getSize(), 'S');
+        hoodie.setSize('L');
+        assertEquals(hoodie.getSize(), 'L');
     }
 
     @Test
@@ -64,6 +85,11 @@ class ClothingTest {
     public void setSizeColour(){
         hoodie.setColour("white");
         assertEquals("white", hoodie.getColour());
+    }
 
+    @Test
+    public void setSizeColourBeanie(){
+        beanie.setColour("black");
+        assertEquals("black", beanie.getColour());
     }
 }
