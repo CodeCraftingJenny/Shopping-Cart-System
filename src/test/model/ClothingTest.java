@@ -63,9 +63,9 @@ class ClothingTest {
 
     @Test
     public void setSizeTestS(){
-        assertEquals(hoodie.getSize(), 'S');
-        hoodie.setSize('M');
-        assertEquals(hoodie.getSize(), 'M');
+        assertEquals(cap.getSize(), 'M');
+        cap.setSize('S');
+        assertEquals(cap.getSize(), 'S');
     }
 
     @Test
