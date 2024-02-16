@@ -90,11 +90,22 @@ public class CustomerTest {
     }
 
     @Test
-    public void getTotal() {
+    public void testGetTotal() {
         customer.addToCart(hoodie);
         customer.addToCart(hoodie);
         customer.addToCart(hoodie);
         assertEquals(3, customer.getTotalNumberItemsOrdered());
         assertEquals(150.00, customer.getTotal());
     }
+
+
+    @Test
+    public void testEmptyCart() {
+        customer.addToCart(hoodie);
+        customer.addToCart(hoodie);
+        customer.addToCart(hoodie);
+        customer.emptyCart();
+        assertTrue(customer.cartIsEmpty());
+    }
 }
+

@@ -12,7 +12,7 @@ public class Customer {
     private double total;
     private Clothing clothing;
 
-    // Creates a customer that can purchase and customize items
+    // Creates a customer that can add/remove items to their cart
     public Customer(String name) {
         this.name = name;
         this.cart = new ArrayList<>();
@@ -47,12 +47,20 @@ public class Customer {
         return cart;
     }
 
+    //EFFECTS: checks if cart is empty
     public boolean cartIsEmpty() {
         if (cart.isEmpty()) {
             return true;
         } else {
             return false;
         }
+    }
+
+    //REQUIRES: Cart to be not empty
+    //MODIFIES: this
+    //EFFECTS: removes all items from cart
+    public void emptyCart() {
+        cart.clear();
     }
 
     //EFFECTS: return total monetary amount of items in cart

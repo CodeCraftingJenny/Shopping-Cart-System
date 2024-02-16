@@ -6,7 +6,7 @@ I have chosen this idea for my personal project because I have an interest in bu
 
 User Stories
 
-- As a customer, I want to browse and select from a range of customizable clothing items such as sweaters, hoodies, t-shirts, and tote bags. 
+- As a customer, I want to browse and select from a range of customizable clothing items.
 - As a customer, I want to choose the size and color of the selected item. 
 - As a customer, I want to be able to order multiple items, add items, remove items from my shopping cart 
 - As a customer, I want to be able to view the items and the total amount in my cart
