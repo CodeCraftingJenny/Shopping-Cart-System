@@ -6,6 +6,8 @@ import java.util.List;
 import model.Customer;
 import model.Clothing;
 
+import javax.sound.midi.SysexMessage;
+
 public class ShoppingInterface {
     private Customer customer;
     private Scanner scanner;
@@ -26,6 +28,7 @@ public class ShoppingInterface {
         System.out.println("7. Exit");
     }
 
+    @SuppressWarnings("methodlength")
     public void startShopping() {
         boolean shopping = true;
         while (shopping) {
@@ -68,17 +71,14 @@ public class ShoppingInterface {
     }
 
     public void addItem() {
-        System.out.println("Enter the item that you want to add: ");
-        System.out.println("hoodie, cap, beanie, totebag ");
+        System.out.println("Enter the item that you want to remove: \nhoodie, cap, beanie, totebag");
         String itemName = scanner.nextLine();
-        ;
         if (!isItemName(itemName)) {
             System.out.println("Invalid name, please try again.");
             return;
         }
         System.out.println("Select Colour: white or black");
         String itemColour = scanner.nextLine();
-        ;
         if (!isColourName(itemColour)) {
             System.out.println("Invalid name, please try again.");
             return;
@@ -107,19 +107,16 @@ public class ShoppingInterface {
         return sizeName == 'S' || sizeName == 'M' || sizeName == 'L';
     }
 
-
+    @SuppressWarnings("methodlength")
     public void removeItem() {
-        System.out.println("Enter the item that you want to remove: ");
-        System.out.println("hoodie, cap, beanie, totebag ");
+        System.out.println("Enter the item that you want to remove: \nhoodie, cap, beanie, totebag");
         String itemName = scanner.nextLine();
-        ;
         if (!isItemName(itemName)) {
             System.out.println("Invalid name, please try again.");
             return;
         }
         System.out.println("Select Colour: white or black");
         String itemColour = scanner.nextLine();
-        ;
         if (!isColourName(itemColour)) {
             System.out.println("Invalid name, please try again.");
             return;
@@ -130,13 +127,7 @@ public class ShoppingInterface {
             System.out.println("Invalid name, please try again.");
             return;
         }
-        Clothing itemToRemove = null;
-        for (Clothing item : customer.viewCart()) {
-            if (item.getNameOfItem().equals(itemName) && item.getColour().equals(itemColour)
-                    && item.getSize() == itemSize) {
-                itemToRemove = item;
-            }
-        }
+        Clothing itemToRemove = findItem(itemName, itemColour, itemSize);
         if (itemToRemove != null) {
             customer.removeInCart(itemToRemove);
             System.out.println("Removed from cart!");
@@ -144,6 +135,17 @@ public class ShoppingInterface {
             System.out.println("Item not found.");
         }
     }
+
+    private Clothing findItem(String itemName, String itemColour, Character itemSize) {
+        for (Clothing item : customer.viewCart()) {
+            if (item.getNameOfItem().equals(itemName) && item.getColour().equals(itemColour)
+                    && item.getSize() == itemSize) {
+                return item;
+            }
+        }
+        return null;
+    }
+
 
     public void viewCart() {
         System.out.println("Items in cart: ");
@@ -164,7 +166,7 @@ public class ShoppingInterface {
         if (customer.cartIsEmpty()) {
             System.out.println("Your cart is empty");
         } else {
-            System.out.println("Would you like to submit your order?");
+            System.out.println("Your total is $" + customer.getTotal());
             System.out.println("Press Y to confirm, N to return");
             String reply = scanner.nextLine();
             if (reply.equals("Y")) {

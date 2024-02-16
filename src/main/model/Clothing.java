@@ -8,7 +8,7 @@ public class Clothing {
     private String colour;
 
     // Creates a clothing item that customer can purchase
-    // Clothing has a name, size, and colour
+    // Clothing has a name, size, and colour, price is set
     public Clothing(String nameOfItem, String colour, Character size) {
         this.nameOfItem = nameOfItem;
         this.size = size;
