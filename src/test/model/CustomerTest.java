@@ -117,5 +117,15 @@ public class CustomerTest {
         assertTrue(customer.isItemInCart("beanie"));
         assertTrue(customer.isItemInCart("shirt"));
     }
+
+    @Test
+    public void testIsItemInCartFalse() {
+        customer.addToCart(hoodie);
+        assertTrue(customer.isItemInCart("hoodie"));
+        assertFalse(customer.isItemInCart("beanie"));
+        assertFalse(customer.isItemInCart("shirt"));
+
+    }
+
 }
 
