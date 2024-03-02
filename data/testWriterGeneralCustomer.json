@@ -1,0 +1,20 @@
+{
+    "name": "Jenny",
+    "cart": [
+        {
+            "colour": "BLUE",
+            "size": "S",
+            "name": "hoodie"
+        },
+        {
+            "colour": "RED",
+            "size": "L",
+            "name": "beanie"
+        },
+        {
+            "colour": "WHITE",
+            "size": "M",
+            "name": "shirt"
+        }
+    ]
+}

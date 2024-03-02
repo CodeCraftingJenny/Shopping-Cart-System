@@ -1,10 +1,15 @@
 package model;
 
+import org.json.JSONArray;
+import org.json.JSONObject;
+import persistence.Writable;
+
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Customer {
+public class Customer implements Writable {
 
     private String name;
     private ArrayList<Clothing> cart;
@@ -72,4 +77,34 @@ public class Customer {
         return total;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public boolean isItemInCart(String nameOfItem) {
+        for (Clothing clothing : cart) {
+            if (clothing.getNameOfItem().equals(nameOfItem)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Override
+    //EFFECTS: returns JSONObject that represents customer
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", this.name);
+        json.put("cart", cartToJson());
+        return json;
+    }
+
+    //EFFECTS: returns JSONArray that represents customer cart
+    private JSONArray cartToJson() {
+        JSONArray jsonArray = new JSONArray();
+        for (Clothing c : cart) {
+            jsonArray.put(c.toJson());
+        }
+        return jsonArray;
+    }
 }

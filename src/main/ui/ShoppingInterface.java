@@ -1,22 +1,33 @@
 package ui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Scanner;
 import java.util.List;
 
 import model.Customer;
 import model.Clothing;
+import persistence.JsonReader;
+import persistence.JsonWriter;
 
 import javax.sound.midi.SysexMessage;
 
 public class ShoppingInterface {
+    private static final String JSON_STORE = "./data/customer.json";
     private Customer customer;
     private Scanner scanner;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    public ShoppingInterface(Customer customer) {
+    //EFFECTS: constructs Customer and runs the application
+    public ShoppingInterface(Customer customer) throws FileNotFoundException {
         this.customer = customer;
         this.scanner = new Scanner(System.in);
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
     }
 
+    //EFFECTS: display the menu
     public void displayMenu() {
         System.out.println("Welcome to my store!");
         System.out.println("1. View Catalogue");
@@ -25,9 +36,13 @@ public class ShoppingInterface {
         System.out.println("4. View Cart");
         System.out.println("5. Get Total");
         System.out.println("6. Order Items");
-        System.out.println("7. Exit");
+        System.out.println("7. Save Cart");
+        System.out.println("8. Load Cart");
+        System.out.println("9. Exit");
     }
 
+    // MODIFIES: this
+    // EFFECTS: allows for user to choose what they want to do
     @SuppressWarnings("methodlength")
     public void startShopping() {
         boolean shopping = true;
@@ -54,22 +69,31 @@ public class ShoppingInterface {
                     orderItems();
                     break;
                 case 7:
+                    saveWorkRoom();
+                    break;
+                case 8:
+                    loadWorkRoom();
+                    break;
+                case 9:
                     shopping = false;
                     System.out.println("Thank you for shopping!");
                     break;
-                case 8:
+                case 10:
                 default:
                     System.out.println("Invalid option, please try again.");
             }
         }
     }
 
+    //EFFECTS: shows a catalogue of what is in stock
     public void viewCatalogue() {
         System.out.println("Hoodies $50, Caps $15, Beanies $15, Totebags $10");
         System.out.println("Each item comes in either black or white");
         System.out.println("Each item is sized from small (S), medium (M), large (L)");
     }
 
+    //MODIFIES: this
+    //EFFECTS: allows for customers to add items into cart
     public void addItem() {
         System.out.println("Enter the item that you want to remove: \nhoodie, cap, beanie, totebag");
         String itemName = scanner.nextLine();
@@ -84,7 +108,7 @@ public class ShoppingInterface {
             return;
         }
         System.out.println("Select size: S, M, L");
-        char itemSize = scanner.nextLine().charAt(0);
+        String itemSize = scanner.nextLine();
         if (!isSizeName(itemSize)) {
             System.out.println("Invalid name, please try again.");
             return;
@@ -103,10 +127,12 @@ public class ShoppingInterface {
         return colourName.equals("white") || colourName.equals("black");
     }
 
-    private boolean isSizeName(char sizeName) {
-        return sizeName == 'S' || sizeName == 'M' || sizeName == 'L';
+    private boolean isSizeName(String sizeName) {
+        return sizeName.equals("S") || sizeName.equals("M") || sizeName.equals("L");
     }
 
+    //MODIFIES: this
+    //EFFECTS: allows for customers to remove items into cart
     @SuppressWarnings("methodlength")
     public void removeItem() {
         System.out.println("Enter the item that you want to remove: \nhoodie, cap, beanie, totebag");
@@ -122,7 +148,7 @@ public class ShoppingInterface {
             return;
         }
         System.out.println("Select size: S, M, L");
-        char itemSize = scanner.nextLine().charAt(0);
+        String itemSize = scanner.nextLine();
         if (!isSizeName(itemSize)) {
             System.out.println("Invalid name, please try again.");
             return;
@@ -136,10 +162,11 @@ public class ShoppingInterface {
         }
     }
 
-    private Clothing findItem(String itemName, String itemColour, Character itemSize) {
+    //EFFECTS: finds clothing item in cart
+    private Clothing findItem(String itemName, String itemColour, String itemSize) {
         for (Clothing item : customer.viewCart()) {
             if (item.getNameOfItem().equals(itemName) && item.getColour().equals(itemColour)
-                    && item.getSize() == itemSize) {
+                    && item.getSize().equals(itemSize)) {
                 return item;
             }
         }
@@ -162,6 +189,8 @@ public class ShoppingInterface {
         System.out.println("Total amount: $" + customer.getTotal());
     }
 
+    //MODIFIES: this
+    //EFFECTS: allows customer to order item, once ordered cart is cleared
     public void orderItems() {
         if (customer.cartIsEmpty()) {
             System.out.println("Your cart is empty");
@@ -177,6 +206,31 @@ public class ShoppingInterface {
             } else {
                 System.out.println("Invalid Option");
             }
+        }
+    }
+
+    // Referenced from the JsonSerialization Demo
+    // https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo
+    // EFFECTS: saves the workroom to file
+    private void saveWorkRoom() {
+        try {
+            jsonWriter.open();
+            jsonWriter.write(customer);
+            jsonWriter.close();
+            System.out.println("Saved " + customer.getName() + " to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: loads workroom from file
+    private void loadWorkRoom() {
+        try {
+            customer = jsonReader.read();
+            System.out.println("Loaded " + customer.getName() + " from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
         }
     }
 }

@@ -20,9 +20,9 @@ public class CustomerTest {
     @BeforeEach
     public void setUp() {
         customer = new Customer("Kari");
-        hoodie = new Clothing("hoodie", "BLUE", 'S');
-        beanie = new Clothing("beanie", "RED", 'L');
-        shirt = new Clothing("shirt", "WHITE", 'M');
+        hoodie = new Clothing("hoodie", "BLUE", "S");
+        beanie = new Clothing("beanie", "RED", "L");
+        shirt = new Clothing("shirt", "WHITE", "M");
         cart = new ArrayList<>();
     }
 
@@ -106,6 +106,16 @@ public class CustomerTest {
         customer.addToCart(hoodie);
         customer.emptyCart();
         assertTrue(customer.cartIsEmpty());
+    }
+
+    @Test
+    public void testIsItemInCart() {
+        customer.addToCart(hoodie);
+        customer.addToCart(beanie);
+        customer.addToCart(shirt);
+        assertTrue(customer.isItemInCart("hoodie"));
+        assertTrue(customer.isItemInCart("beanie"));
+        assertTrue(customer.isItemInCart("shirt"));
     }
 }
 

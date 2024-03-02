@@ -1,15 +1,18 @@
 package model;
 
-public class Clothing {
+import org.json.JSONObject;
+import persistence.Writable;
+
+public class Clothing implements Writable {
 
     private String nameOfItem;
-    private char size;
+    private String size;
     private double price;
     private String colour;
 
     // Creates a clothing item that customer can purchase
     // Clothing has a name, size, and colour, price is set
-    public Clothing(String nameOfItem, String colour, Character size) {
+    public Clothing(String nameOfItem, String colour, String size) {
         this.nameOfItem = nameOfItem;
         this.size = size;
         this.colour = colour;
@@ -33,22 +36,22 @@ public class Clothing {
     }
 
     //EFFECTS: get size of item
-    public Character getSize() {
+    public String getSize() {
         return this.size;
     }
 
     //MODIFIES: this
     //EFFECTS: sets size of item
-    public Character setSize(Character size) {
+    public String setSize(String size) {
         switch (size) {
-            case 'S':
-                return this.size = 'S';
-            case 'M':
-                return this.size = 'M';
-            case 'L':
-                return this.size = 'L';
+            case "S":
+                return this.size = "S";
+            case "M":
+                return this.size = "M";
+            case "L":
+                return this.size = "L";
             default:
-                return this.size = 'X';
+                return this.size = "X";
         }
     }
 
@@ -80,4 +83,13 @@ public class Clothing {
         return price;
     }
 
+    @Override
+    //EFFECTS: returns JSONObject that represents clothing
+    public JSONObject toJson() {
+        JSONObject json = new JSONObject();
+        json.put("name", this.nameOfItem);
+        json.put("colour", this.colour);
+        json.put("size", this.size);
+        return json;
+    }
 }
