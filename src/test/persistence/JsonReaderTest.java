@@ -12,7 +12,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-public class JsonReaderTest {
+public class JsonReaderTest extends JsonTest{
     private Customer customer;
     private List<Clothing> cart;
     private Clothing hoodie;

@@ -1,8 +1,15 @@
 {
     "name": "JJ",
-    "cart": [{
-        "colour": "white",
-        "size": "S",
-        "name": "cap"
-    }]
+    "cart": [
+        {
+            "colour": "white",
+            "size": "M",
+            "name": "cap"
+        },
+        {
+            "colour": "black",
+            "size": "M",
+            "name": "totebag"
+        }
+    ]
 }
