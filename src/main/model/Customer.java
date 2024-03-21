@@ -52,6 +52,15 @@ public class Customer implements Writable {
         return cart;
     }
 
+//    public List<String> viewCartItems() {
+//        List<String> items = new ArrayList<>();
+//        for (Clothing c : cart) {
+//            String cartItem = c.getNameOfItem() + c.getColour() + c.getSize();
+//            items.add(cartItem);
+//        }
+//        return items;
+//    }
+
     //EFFECTS: checks if cart is empty
     public boolean cartIsEmpty() {
         if (cart.isEmpty()) {
