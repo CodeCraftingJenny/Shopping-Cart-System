@@ -31,7 +31,7 @@ public class JsonReaderTest extends JsonTest{
     void testReaderNonExistentFile() {
         JsonReader reader = new JsonReader("./data/noSuchFile.json");
         try {
-            customer = reader.read();
+            customer = reader.readCustomer();
             fail("Expected IOException");
         } catch (IOException e) {
             // pass
@@ -42,7 +42,7 @@ public class JsonReaderTest extends JsonTest{
     void testReaderEmptyWorkRoom() {
         JsonReader reader = new JsonReader("./data/testReaderEmptyCustomer.json");
         try {
-            customer= reader.read();
+            customer= reader.readCustomer();
             assertEquals("Jenny", customer.getName());
             assertEquals(0, customer.getTotalNumberItemsOrdered());
         } catch (IOException e) {
@@ -54,7 +54,7 @@ public class JsonReaderTest extends JsonTest{
     void testReaderCartWithItems() {
         JsonReader reader = new JsonReader("./data/testReaderGeneralCustomer.json");
         try {
-            customer = reader.read();
+            customer = reader.readCustomer();
             assertEquals("Jenny", customer.getName());
             assertEquals(3, customer.getTotalNumberItemsOrdered());
             assertTrue(customer.isItemInCart("hoodie"));

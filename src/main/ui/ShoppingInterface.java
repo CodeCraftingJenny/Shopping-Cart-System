@@ -227,7 +227,7 @@ public class ShoppingInterface {
     // EFFECTS: loads workroom from file
     private void loadWorkRoom() {
         try {
-            customer = jsonReader.read();
+            customer = jsonReader.readCustomer();
             System.out.println("Loaded " + customer.getName() + " from " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);

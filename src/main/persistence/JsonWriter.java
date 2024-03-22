@@ -3,7 +3,10 @@ package persistence;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.util.List;
+
 import model.Customer;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 // Referenced from the JsonSerialization Demo
@@ -31,7 +34,7 @@ public class JsonWriter {
     // EFFECTS: writes JSON representation of customer to file
     public void write(Customer customer) {
         JSONObject json = customer.toJson();
-        this.saveToFile(json.toString(4));
+        this.saveToFile(json.toString());
     }
 
     // MODIFIES: this

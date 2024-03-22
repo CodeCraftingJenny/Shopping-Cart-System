@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.stream.Stream;
 import model.Clothing;
 import model.Customer;
@@ -25,7 +27,7 @@ public class JsonReader {
 
     //EFFECTS: reads customer data from file and returns it
     //throws IOException if error happens when reading data in the file
-    public Customer read() throws IOException {
+    public Customer readCustomer() throws IOException {
         String jsonData = this.readFile(this.source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return this.parseCustomer(jsonObject);
@@ -38,10 +40,8 @@ public class JsonReader {
         try (Stream<String> stream = Files.lines(Paths.get(source), StandardCharsets.UTF_8)) {
             stream.forEach(s -> contentBuilder.append(s));
         }
-
         return contentBuilder.toString();
     }
-
 
     //EFFECTS: parses JSON data that represents Customer and returns it
     private Customer parseCustomer(JSONObject jsonObject) {

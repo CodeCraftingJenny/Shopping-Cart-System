@@ -1,15 +1,1 @@
-{
-    "name": "JJ",
-    "cart": [
-        {
-            "colour": "white",
-            "size": "M",
-            "name": "cap"
-        },
-        {
-            "colour": "black",
-            "size": "M",
-            "name": "totebag"
-        }
-    ]
-}
+{"name":"JJ","cart":[{"colour":"white","size":"S","name":"cap"},{"colour":"white","size":"S","name":"cap"},{"colour":"black","size":"S","name":"cap"},{"colour":"black","size":"S","name":"cap"}]}

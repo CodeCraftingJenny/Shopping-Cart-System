@@ -50,7 +50,7 @@ public class JsonWriterTest extends JsonTest {
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterEmptyCustomer.json");
-            customer = reader.read();
+            customer = reader.readCustomer();
             assertEquals("Jenny", customer.getName());
             assertEquals(0, customer.getTotalNumberItemsOrdered());
         } catch (IOException io) {
@@ -71,7 +71,7 @@ public class JsonWriterTest extends JsonTest {
             writer.close();
 
             JsonReader reader = new JsonReader("./data/testWriterGeneralCustomer.json");
-            customer = reader.read();
+            customer = reader.readCustomer();
             assertEquals("Jenny", customer.getName());
             assertEquals(3, customer.getTotalNumberItemsOrdered());
             assertTrue(customer.isItemInCart("hoodie"));
