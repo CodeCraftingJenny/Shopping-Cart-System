@@ -2,12 +2,11 @@
 
 ## Background
 
-This program is a customer tracking system where customers can create a customized order. The store offers four items
-that can be customized: beanies, caps, tote bags, and hoodies. Customers can add letters and pictures onto these
-items. Customers will be able to add items to their cart and place orders. To place an order, customers will have to
-input their name, address, phone number, and select whether they would like it delivered or picked up.
-I have chosen this idea for my personal project because I have an interest in business and I feel that I would learn a
-lot from trying to create this customer tracking system.
+This program is a shopping cart system where customers can create an order. The store offers four items
+that can be customized: beanies, caps, tote bags, and hoodies. Customers will be able to add items to 
+their cart and place orders. To place an order, customers will have to  input their name, address, phone 
+number. I have chosen this idea for my  personal project because I have an interest in business and I
+feel that I would learn a  lot from trying to create this.
 
 User Stories
 
@@ -19,4 +18,3 @@ User Stories
 - As a customer, I want to have the option to save my shopping cart to file
 - As a customer, when I return to the store, I want to be given the option to load my shopping cart from file
 
-An example of text with **bold** and *italic* fonts.  
