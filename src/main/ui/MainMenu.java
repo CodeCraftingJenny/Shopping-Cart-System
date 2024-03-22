@@ -27,7 +27,7 @@ public class MainMenu extends JFrame {
     private JTextField addressField;
     private JTextField phoneField;
     private JTextField emailField;
-    private final String DATA_FILE = "./data/customer.json";
+    private final String dataFile = "./data/customer.json";
     private Customer customer;
 
     public MainMenu() {
@@ -85,9 +85,9 @@ public class MainMenu extends JFrame {
         StringBuilder messageBuilder = new StringBuilder("<html>");
         for (Clothing clothing : customer.viewCart()) {
             messageBuilder.append(clothing.getNameOfItem()).append(" - ")
-                            .append(clothing.getColour()).append(" - ")
-                            .append(clothing.getSize()).append(" - $")
-                            .append(clothing.getPrice()).append("<br>");
+                    .append(clothing.getColour()).append(" - ")
+                    .append(clothing.getSize()).append(" - $")
+                    .append(clothing.getPrice()).append("<br>");
         }
         messageBuilder.append("</html>");
         JLabel messageLabel = new JLabel();
@@ -226,7 +226,8 @@ public class MainMenu extends JFrame {
         cart.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                addToCart(itemName.getNameOfItem(), (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
+                addToCart(itemName.getNameOfItem(),
+                        (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
             }
         });
         return cart;
@@ -362,7 +363,8 @@ public class MainMenu extends JFrame {
         capFrame.add(defCap);
         capFrame.add(whiteButton);
         capFrame.add(blackButton);
-        Clothing cap = new Clothing("cap", (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
+        Clothing cap = new Clothing("cap",
+                (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
         capFrame.add(createAddToCartButton(cap, 15.00));
         capFrame.add(hatPrice());
     }
@@ -411,7 +413,8 @@ public class MainMenu extends JFrame {
         hoodieFrame.add(defHoodie);
         hoodieFrame.add(whiteButton);
         hoodieFrame.add(blackButton);
-        Clothing hoodieClothing = new Clothing("hoodie", (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
+        Clothing hoodieClothing = new Clothing("hoodie",
+                (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
         hoodieFrame.add(createAddToCartButton(hoodieClothing, 50.00));
         hoodieFrame.add(hoodiePrice());
     }
@@ -462,7 +465,8 @@ public class MainMenu extends JFrame {
         toteBagFrame.add(defTote);
         toteBagFrame.add(whiteButton);
         toteBagFrame.add(blackButton);
-        Clothing toteBag = new Clothing("totebag", (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
+        Clothing toteBag = new Clothing("totebag",
+                (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
         toteBagFrame.add(createAddToCartButton(toteBag, 10.00));
         toteBagFrame.add(totePrice());
     }
@@ -507,7 +511,8 @@ public class MainMenu extends JFrame {
         beanieFrame.add(defBeanie);
         beanieFrame.add(whiteButton);
         beanieFrame.add(blackButton);
-        Clothing beanie = new Clothing("beanie", (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
+        Clothing beanie = new Clothing("beanie",
+                (String) colourComboBox.getSelectedItem(), (String) sizeComboBox.getSelectedItem());
         beanieFrame.add(createAddToCartButton(beanie, 15.00));
 
         beanieFrame.add(hatPrice());
@@ -561,7 +566,8 @@ public class MainMenu extends JFrame {
             Clothing removeItem = customer.viewCart().remove(index);
             double removePrice = itemPrices.remove(index);
             totalPrice -= removePrice;
-            JOptionPane.showMessageDialog(null, removeItem.getNameOfItem() + " has been removed. Please open cart again.");
+            JOptionPane.showMessageDialog(null,
+                    removeItem.getNameOfItem() + " has been removed. Please open cart again.");
         }
     }
 
@@ -715,7 +721,7 @@ public class MainMenu extends JFrame {
     }
 
     private void saveCart() {
-        JsonWriter jsonWriter = new JsonWriter(DATA_FILE);
+        JsonWriter jsonWriter = new JsonWriter(dataFile);
         try {
             jsonWriter.open();
             jsonWriter.write(customer);
@@ -728,7 +734,7 @@ public class MainMenu extends JFrame {
     // MODIFIES: this
     // EFFECTS: loads workroom from file
     private void loadCart() {
-        JsonReader jsonReader = new JsonReader(DATA_FILE);
+        JsonReader jsonReader = new JsonReader(dataFile);
         try {
             customer = jsonReader.readCustomer();
         } catch (IOException e) {
@@ -739,7 +745,7 @@ public class MainMenu extends JFrame {
     public static void main(String[] args) {
         javax.swing.SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-               new MainMenu();
+                new MainMenu();
             }
         });
     }
