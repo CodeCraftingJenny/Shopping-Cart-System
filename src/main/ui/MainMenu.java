@@ -37,6 +37,7 @@ public class MainMenu extends JFrame {
     }
 
     //REQUIRES: String that represents the image path to image, ints of width and height
+    //MODIFIES: ImageIcon
     //EFFECTS: loads image, resizes image, and returns that new image
     private ImageIcon resizeImage(String imagePath, int width, int height) {
         ImageIcon originalIcon = new ImageIcon(MainMenu.class.getResource(imagePath));
@@ -88,6 +89,7 @@ public class MainMenu extends JFrame {
         return priceBag;
     }
 
+    //Citation: https://stackoverflow.com/questions/1090098/newline-in-jlabel
     //EFFECTS: iterates over the items in the cart, creates a string that appends each item in cart
     // modifies the message so that it fits in the screen, returns the message
     private JLabel displayMessages() {
@@ -167,6 +169,7 @@ public class MainMenu extends JFrame {
     }
 
     //REQUIRES: two jlabels of white and black beanie
+    //MODIFIES: black and white beanie
     //EFFECTS: createss a white button for beanie, if pressed it sets the white beanie visbility to true
     private JButton createWhiteBeanieButton(JLabel whiteBeanie, JLabel blackBeanie) {
         JButton whiteButton = new JButton("White");
@@ -210,6 +213,7 @@ public class MainMenu extends JFrame {
     }
 
     //REQUIRES: two jlabels of white and black hoodie
+    //MODIFIES: black and white hoodie
     //EFFECTS: createss a white button for hoodie, if pressed it sets the white hoodie visbility to true
     private JButton createWhiteHoodieButton(JLabel whiteHoodie, JLabel blackHoodie) {
         JButton whiteButton = new JButton("White");
@@ -227,6 +231,7 @@ public class MainMenu extends JFrame {
     }
 
     //REQUIRES: two jlabels of white and black hoodie
+    //MODIFIES: black and white hoodie
     //EFFECTS: createss a black button for hoodie, if pressed it sets the black hoodie visbility to true
     private JButton createBlackHoodieButton(JLabel whiteHoodie, JLabel blackHoodie) {
         JButton blackButton = new JButton("Black");
@@ -254,6 +259,7 @@ public class MainMenu extends JFrame {
         totalPrice += clothing.getPrice();
     }
 
+    //REQUIRES: clothing item, price of item
     //EFFECTS: Creates button to add items to cart, if pressed, item will be added to cart
     private JButton createAddToCartButton(Clothing itemName, double price) {
         JButton cart = new JButton("Add Cart");
@@ -268,6 +274,8 @@ public class MainMenu extends JFrame {
         return cart;
     }
 
+    //REQUIRES: two jlabels of white and black cap
+    //MODIFIES: black and white cap
     //EFFECTS: createss a white button for cap, if pressed it sets the white cap visbility to true
     private JButton createWhiteCapButton(JLabel whiteCap, JLabel blackCap) {
         JButton whiteButton = new JButton("White");
@@ -284,6 +292,8 @@ public class MainMenu extends JFrame {
         return whiteButton;
     }
 
+    //REQUIRES: two jlabels of white and black cap
+    //MODIFIES: black and white cap
     //EFFECTS: createss a black button for cap, if pressed it sets the black cap visbility to true
     private JButton createBlackCapButton(JLabel whiteCap, JLabel blackCap) {
         JButton blackButton = new JButton("Black");
@@ -300,6 +310,8 @@ public class MainMenu extends JFrame {
         return blackButton;
     }
 
+    //REQUIRES: two jlabels of white and black tote bag
+    //MODIFIES: black and white totebag
     //EFFECTS: createss a white button for totebag, if pressed it sets the white totebag visbility to true
     private JButton createWhiteToteButton(JLabel whiteTote, JLabel blackTote) {
         JButton whiteButton = new JButton("White");
@@ -316,6 +328,8 @@ public class MainMenu extends JFrame {
         return whiteButton;
     }
 
+    //REQUIRES: two jlabels of white and black tote bag
+    //MODIFIES: black and white totebag
     //EFFECTS: createss a black button for totebag, if pressed it sets the black totebag visbility to true
     private JButton createBlackToteButton(JLabel whiteTote, JLabel blackTote) {
         JButton blackButton = new JButton("Black");
@@ -332,6 +346,9 @@ public class MainMenu extends JFrame {
         return blackButton;
     }
 
+
+    //REQUIRES: two jlabels of white and black beanie
+    //MODIFIES: black and white beanie
     //EFFECTS: createss a black button for beanie, if pressed it sets the black beanie visbility to true
     private JButton createBlackBeanieButton(JLabel whiteBeanie, JLabel blackBeanie) {
         JButton blackButton = new JButton("Black");
@@ -478,7 +495,7 @@ public class MainMenu extends JFrame {
         return defHoodie;
     }
 
-    //EFFECTS: creates a label of a black cap
+    //EFFECTS: creates a label of a black hoodie
     private JLabel getBlackHoodie() {
         ImageIcon newBlackHoodie = resizeImage("blackhoodie.png", 500, 500);
         JLabel blackHoodie = new JLabel();

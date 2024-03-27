@@ -26,10 +26,10 @@ to browse hoodies, you can do that by pressing the "Hoodie" button to see what s
 - You can order multiple items by clicking on the cart button, then by pressing on the order button.
 - You can add items to the cart pressing into the clothing option and pressing add cart after you have chosen your 
 preferred colour and size. 
-- You can remove item by inputting the index of the item that you want removed. For example, if there are 2 items in 
+- You can remove items by inputting the index of the item that you want removed. For example, if there are 2 items in 
 your cart, and you want to remove the second item, you can input 2 into the field and press remove. 
 - To view the items in the cart simply click on the cart button
 - To save what you have in your cart click on the save option in the cart menu
 - To load what you had previously in cart, click on the load button.
 - You can locate my visual component when you first run the program. There are pictures of clothing, and if you want to
-view different colours, you can choose a colour and it will show what the item looks like in that colour. 
+view different colours, you can choose a colour, and it will show what the item looks like in that colour. 
