@@ -19,7 +19,6 @@ public class MainMenu extends JFrame {
 
     private JComboBox<String> sizeComboBox;
     private JComboBox<String> colourComboBox;
-    private List<String> cartMessages = new ArrayList<>();
     private double totalPrice = 0.0;
     private List<Double> itemPrices = new ArrayList<>();
     private JTextField indexField;
@@ -36,8 +35,8 @@ public class MainMenu extends JFrame {
         menuGUI();
     }
 
-    //REQUIRES: String that represents the image path to image, ints of width and height
-    //MODIFIES: ImageIcon
+    //REQUIRES: Non-empty string that represents the image path to image, ints of width and height
+    //MODIFIES: this
     //EFFECTS: loads image, resizes image, and returns that new image
     private ImageIcon resizeImage(String imagePath, int width, int height) {
         ImageIcon originalIcon = new ImageIcon(MainMenu.class.getResource(imagePath));
@@ -90,6 +89,7 @@ public class MainMenu extends JFrame {
     }
 
     //Citation: https://stackoverflow.com/questions/1090098/newline-in-jlabel
+    //MODIFIES: this
     //EFFECTS: iterates over the items in the cart, creates a string that appends each item in cart
     // modifies the message so that it fits in the screen, returns the message
     private JLabel displayMessages() {
@@ -170,7 +170,7 @@ public class MainMenu extends JFrame {
 
     //REQUIRES: two jlabels of white and black beanie
     //MODIFIES: black and white beanie
-    //EFFECTS: createss a white button for beanie, if pressed it sets the white beanie visbility to true
+    //EFFECTS: creates a white button for beanie, if pressed it sets the white beanie visibility to true
     private JButton createWhiteBeanieButton(JLabel whiteBeanie, JLabel blackBeanie) {
         JButton whiteButton = new JButton("White");
         whiteButton.setBounds(550, 100, 70, 30);
@@ -214,7 +214,7 @@ public class MainMenu extends JFrame {
 
     //REQUIRES: two jlabels of white and black hoodie
     //MODIFIES: black and white hoodie
-    //EFFECTS: createss a white button for hoodie, if pressed it sets the white hoodie visbility to true
+    //EFFECTS: creates a white button for hoodie, if pressed it sets the white hoodie visibility to true
     private JButton createWhiteHoodieButton(JLabel whiteHoodie, JLabel blackHoodie) {
         JButton whiteButton = new JButton("White");
         whiteButton.setBounds(550, 100, 70, 30);
@@ -232,7 +232,7 @@ public class MainMenu extends JFrame {
 
     //REQUIRES: two jlabels of white and black hoodie
     //MODIFIES: black and white hoodie
-    //EFFECTS: createss a black button for hoodie, if pressed it sets the black hoodie visbility to true
+    //EFFECTS: creates a black button for hoodie, if pressed it sets the black hoodie visibility to true
     private JButton createBlackHoodieButton(JLabel whiteHoodie, JLabel blackHoodie) {
         JButton blackButton = new JButton("Black");
         blackButton.setBounds(650, 100, 70, 30);
@@ -276,7 +276,7 @@ public class MainMenu extends JFrame {
 
     //REQUIRES: two jlabels of white and black cap
     //MODIFIES: black and white cap
-    //EFFECTS: createss a white button for cap, if pressed it sets the white cap visbility to true
+    //EFFECTS: creates a white button for cap, if pressed it sets the white cap visibility to true
     private JButton createWhiteCapButton(JLabel whiteCap, JLabel blackCap) {
         JButton whiteButton = new JButton("White");
         whiteButton.setBounds(550, 100, 70, 30);
@@ -312,7 +312,7 @@ public class MainMenu extends JFrame {
 
     //REQUIRES: two jlabels of white and black tote bag
     //MODIFIES: black and white totebag
-    //EFFECTS: createss a white button for totebag, if pressed it sets the white totebag visbility to true
+    //EFFECTS: creates a white button for totebag, if pressed it sets the white totebag visibility to true
     private JButton createWhiteToteButton(JLabel whiteTote, JLabel blackTote) {
         JButton whiteButton = new JButton("White");
         whiteButton.setBounds(550, 100, 70, 30);
@@ -330,7 +330,7 @@ public class MainMenu extends JFrame {
 
     //REQUIRES: two jlabels of white and black tote bag
     //MODIFIES: black and white totebag
-    //EFFECTS: createss a black button for totebag, if pressed it sets the black totebag visbility to true
+    //EFFECTS: creates a black button for totebag, if pressed it sets the black totebag visibility to true
     private JButton createBlackToteButton(JLabel whiteTote, JLabel blackTote) {
         JButton blackButton = new JButton("Black");
         blackButton.setBounds(650, 100, 70, 30);
@@ -407,8 +407,8 @@ public class MainMenu extends JFrame {
     }
 
 
-    //MODIFIES: JFrame
-    //EFFECTS: creates a frame of the cap item with all of its features
+    //MODIFIES: this
+    //EFFECTS: opens a frame of the cap item with all of its features
     private void openCapFrame() {
         JFrame capFrame = setUpFrame("Cap Frame");
         ImageIcon whiteCap = resizeImage("whiteCap.png", 250, 200);
@@ -459,8 +459,8 @@ public class MainMenu extends JFrame {
         return defCap;
     }
 
-    //MODIFIES: JFrame
-    //EFFECTS: creates a frame of the hoodie item with all of its features
+    //MODIFIES: this
+    //EFFECTS: opens a frame of the hoodie item with all of its features
     private void openHoodieFrame() {
         JFrame hoodieFrame = setUpFrame("Hoodie Frame");
         ImageIcon newHoodie = resizeImage("hoodie.png", 500, 500);
@@ -505,7 +505,7 @@ public class MainMenu extends JFrame {
         return blackHoodie;
     }
 
-    //MODIFIES: JFrame
+    //MODIFIES: this
     //EFFECTS: creates a frame according to specifications
     private JFrame setUpFrame(String createFrame) {
         JFrame newFrame = new JFrame(createFrame);
@@ -517,8 +517,8 @@ public class MainMenu extends JFrame {
         return newFrame;
     }
 
-    //MODIFIES: JFrame
-    //EFFECTS: creates a frame of the tote bag item with all of its features
+    //MODIFIES: this
+    //EFFECTS: opens a frame of the tote bag item with all of its features
     private void openToteBagFrame() {
         JFrame toteBagFrame = setUpFrame("Tote Bag Frame");
         ImageIcon whiteToteBag = resizeImage("wTote.png", 400, 300);
@@ -563,8 +563,8 @@ public class MainMenu extends JFrame {
         return defTote;
     }
 
-    //MODIFIES: JFrame
-    //EFFECTS: creates a frame of the beanie item with all of its features
+    //MODIFIES: this
+    //EFFECTS: opens a frame of the beanie item with all of its features
     private void openBeanieFrame() {
         JFrame beanieFrame = setUpFrame("Beanie Frame");
 
@@ -614,8 +614,8 @@ public class MainMenu extends JFrame {
         return defBeanie;
     }
 
-    //MODIFIES: JFrame
-    //EFFECTS: creates a frame of the cart frame, where user can view what's in their cart
+    //MODIFIES: this
+    //EFFECTS: opens a frame of the cart frame, where user can view what's in their cart
     // remove items, save, and load their cart
     private void openCartFrame() {
         JFrame cartFrame = setUpFrame("Cart Frame");
@@ -641,7 +641,8 @@ public class MainMenu extends JFrame {
         cartFrame.add(loadButton());
     }
 
-    //MODIFIES: customer
+    //REQUIRES: index should not be negative
+    //MODIFIES: this
     //EFFECTS: removes item in cart according to the given index
     private void removeFromCart(int index) {
         if (index >= 0 && index < customer.viewCart().size()) {
@@ -674,8 +675,8 @@ public class MainMenu extends JFrame {
         return removeButton;
     }
 
-    //MODIFIES: JFrame
-    //EFFECTS: creates a frame of the menu with all of its features
+    //MODIFIES: this
+    //EFFECTS: opens a frame of the menu with all of its features
     public void menuGUI() {
         JLabel hoodie = getHoodie();
         JLabel cap = getCap();
@@ -737,7 +738,7 @@ public class MainMenu extends JFrame {
         return beanie;
     }
 
-    //MODIFIES: JFrame
+    //MODIFIES: this
     //EFFECTS: creates a JFrame
     private JFrame setFrame() {
         JFrame frame = new JFrame();
@@ -758,8 +759,8 @@ public class MainMenu extends JFrame {
     }
 
 
-    //MODIFIES: JFrame
-    //EFFECTS: creates a frame of the order menu, where users can input their information
+    //MODIFIES: this
+    //EFFECTS: opens a frame of the order menu, where users can input their information
     private void orderFrame() {
         JFrame orderFrame = setUpFrame("Order Frame");
         nameField = new JTextField(2);
