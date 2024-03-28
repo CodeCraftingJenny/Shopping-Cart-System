@@ -758,7 +758,7 @@ public class MainMenu extends JFrame {
         return welcome;
     }
 
-
+    //REQUIRES: nameField, addressField, and phoneField should not be empty
     //MODIFIES: this
     //EFFECTS: opens a frame of the order menu, where users can input their information
     private void orderFrame() {
@@ -792,6 +792,8 @@ public class MainMenu extends JFrame {
 
     }
 
+    //MODIFIES: this
+    //EFFECTS: creates a label and a field where user can input their email
     private JLabel getEmailLabel(JFrame orderFrame) {
         emailField = new JTextField(2);
         emailField.setBounds(100, 400, 500, 30);
@@ -801,6 +803,7 @@ public class MainMenu extends JFrame {
         return emailLabel;
     }
 
+    //EFFECTS: creates a confirm button, if clicked cart will be emptied
     private JButton getConfirmButton() {
         JButton confirmButton = new JButton("Confirm");
         confirmButton.addActionListener(new ActionListener() {
