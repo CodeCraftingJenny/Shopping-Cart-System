@@ -2,6 +2,8 @@ package ui;
 
 import model.Clothing;
 import model.Customer;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -206,6 +208,9 @@ public class MainMenu extends JFrame {
         exit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                for (Event event : EventLog.getInstance()) {
+                    System.out.println(event.toString() + "\n");
+                }
                 System.exit(0);
             }
         });
@@ -618,6 +623,8 @@ public class MainMenu extends JFrame {
     //EFFECTS: opens a frame of the cart frame, where user can view what's in their cart
     // remove items, save, and load their cart
     private void openCartFrame() {
+        customer.viewCartPage();
+
         JFrame cartFrame = setUpFrame("Cart Frame");
         JLabel indexLabel = new JLabel("Enter index of item you want removed: ");
         indexField = new JTextField(2);
@@ -630,7 +637,6 @@ public class MainMenu extends JFrame {
         JLabel messageLabel = displayMessages();
         messageLabel.setBounds(300, 50, 400, 500);
         cartFrame.add(messageLabel);
-
         JLabel totalPriceLabel = displayTotalPrice();
         totalPriceLabel.setBounds(700, 350, 200, 30);
         cartFrame.add(totalPriceLabel);
@@ -647,6 +653,7 @@ public class MainMenu extends JFrame {
     private void removeFromCart(int index) {
         if (index >= 0 && index < customer.viewCart().size()) {
             Clothing removeItem = customer.viewCart().remove(index);
+            customer.removeInCart(removeItem);
             double removePrice = itemPrices.remove(index);
             totalPrice -= removePrice;
             JOptionPane.showMessageDialog(null,
@@ -810,7 +817,7 @@ public class MainMenu extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if (customer.viewCart().size() > 0) {
-                    customer.viewCart().clear();
+                    customer.emptyCart();
                     JOptionPane.showMessageDialog(null, "Order has been placed.");
                 } else {
                     JOptionPane.showMessageDialog(null, "Cart is empty");

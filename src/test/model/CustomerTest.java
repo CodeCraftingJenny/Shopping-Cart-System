@@ -71,6 +71,8 @@ public class CustomerTest {
         assertTrue(cart.contains(shirt));
         customer.removeInCart(beanie);
         assertFalse(cart.contains(beanie));
+        assertEquals(hoodie, customer.viewCartPage().get(0));
+        assertTrue(customer.viewCartPage().contains(hoodie));
     }
 
     @Test

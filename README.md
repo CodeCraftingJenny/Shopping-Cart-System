@@ -33,3 +33,25 @@ your cart, and you want to remove the second item, you can input 2 into the fiel
 - To load what you had previously in cart, click on the load button.
 - You can locate my visual component when you first run the program. There are pictures of clothing, and if you want to
 view different colours, you can choose a colour, and it will show what the item looks like in that colour. 
+
+Phase 4: Task 2
+Sample of eventLog:
+
+Sun Mar 31 21:25:30 PDT 2024
+hoodie-black-S added to cart
+
+Sun Mar 31 21:25:35 PDT 2024
+cap-white-L added to cart
+
+Sun Mar 31 21:25:37 PDT 2024
+Cart has been opened
+
+Sun Mar 31 21:25:37 PDT 2024
+Total price of items in cart was returned.
+
+Sun Mar 31 21:25:40 PDT 2024
+hoodie-black-S removed from cart
+
+Sun Mar 31 21:25:49 PDT 2024
+Cart has been cleared
+

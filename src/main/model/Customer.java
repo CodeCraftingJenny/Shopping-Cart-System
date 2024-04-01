@@ -4,10 +4,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 import persistence.Writable;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Customer implements Writable {
 
@@ -38,6 +35,8 @@ public class Customer implements Writable {
     //EFFECTS: adds clothing item to customer's cart
     public void addToCart(Clothing item) {
         this.cart.add(item);
+        EventLog.getInstance().logEvent(new Event(item.getNameOfItem() + "-"
+                + item.getColour() + "-" + item.getSize() + " added to cart"));
     }
 
     //REQUIRES: shopping cart is not empty
@@ -45,11 +44,18 @@ public class Customer implements Writable {
     //EFFECTS: removes item in customer's cart
     public void removeInCart(Clothing item) {
         this.cart.remove(item);
+        EventLog.getInstance().logEvent(new Event(item.getNameOfItem() + "-"
+                + item.getColour() + "-" + item.getSize() + " removed from cart"));
     }
 
     //EFFECTS: return list of items in cart
     public List<Clothing> viewCart() {
         return cart;
+    }
+
+    public List<Clothing> viewCartPage() {
+        EventLog.getInstance().logEvent(new Event("Cart has been opened"));
+        return Collections.unmodifiableList(cart);
     }
 
     //EFFECTS: checks if cart is empty
@@ -66,6 +72,7 @@ public class Customer implements Writable {
     //EFFECTS: removes all items from cart
     public void emptyCart() {
         cart.clear();
+        EventLog.getInstance().logEvent(new Event("Cart has been cleared"));
     }
 
     //EFFECTS: return total monetary amount of items in cart
@@ -74,6 +81,7 @@ public class Customer implements Writable {
         for (Clothing clothing : cart) {
             total += clothing.getPrice();
         }
+        EventLog.getInstance().logEvent(new Event("Total price of items in cart was returned."));
         return total;
     }
 

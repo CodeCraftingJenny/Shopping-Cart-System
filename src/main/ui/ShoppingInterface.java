@@ -7,6 +7,8 @@ import java.util.List;
 
 import model.Customer;
 import model.Clothing;
+import model.Event;
+import model.EventLog;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -75,6 +77,9 @@ public class ShoppingInterface {
                     loadWorkRoom();
                     break;
                 case 9:
+                    for (Event event : EventLog.getInstance()) {
+                        System.out.println(event.toString() + "\n");
+                    }
                     shopping = false;
                     System.out.println("Thank you for shopping!");
                     break;
@@ -183,6 +188,7 @@ public class ShoppingInterface {
             System.out.println(item.getNameOfItem() + "(" + item.getColour() + ")"
                     + "  size:" + item.getSize() + "   $" + item.getPrice());
         }
+        customer.viewCartPage();
     }
 
     public void getTotal() {
