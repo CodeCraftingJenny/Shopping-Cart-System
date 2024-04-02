@@ -12,7 +12,6 @@ public class Customer implements Writable {
     private ArrayList<Clothing> cart;
     private int counter;
     private double total;
-    private Clothing clothing;
 
     // Creates a customer that can add/remove items to their cart
     public Customer(String name) {

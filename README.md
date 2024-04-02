@@ -34,7 +34,7 @@ your cart, and you want to remove the second item, you can input 2 into the fiel
 - You can locate my visual component when you first run the program. There are pictures of clothing, and if you want to
 view different colours, you can choose a colour, and it will show what the item looks like in that colour. 
 
-Phase 4: Task 2
+**Phase 4: Task 2**
 Sample of eventLog:
 
 Sun Mar 31 21:25:30 PDT 2024
@@ -55,3 +55,18 @@ hoodie-black-S removed from cart
 Sun Mar 31 21:25:49 PDT 2024
 Cart has been cleared
 
+**Phase 4: Task 3**
+My MainMenu class can be significantly improved by following the Single Responsbiltiy Principle. In this class, 
+buttons, labels, event handling are all contained in one class. This violates SRP since the MainMenu class has 
+more than one responsibility. For the components such as buttons, labels, and frames, I could create a separate 
+class that is only responsible for creating these UI components. Within this class I would have methods called 
+“createButton, “createLabel”, etc. This way my code duplication and redundancy decrease.  I could also create 
+a class that handles my events. So rather than having methods such as addToCart, removeFromCart, displayMessage, 
+etc. all in one class with methods for the UI creation I could create another class to handle events. Applying 
+these changes would make my code more maintainable and readable.  
+
+Another improvement that I could make is to use enumerations in my Clothing class. In my clothing class, there 
+are four items: hoodies, caps, beanies, and totebags. Each comes in 3 sizes: S, M, L. Each has its own price 
+attached to the item. I could create an Enumeration class for the clothing item names, sizes, and colours. It 
+would be a good idea to use enumerations because this would ensure that only valid values are used and would 
+also make my code easier to maintain if I need to add a new clothing item. 
