@@ -201,6 +201,7 @@ public class MainMenu extends JFrame {
     }
 
     //EFFECTS: creates a exit button on the main page, if pressed it will close the program
+    // once program is closed, a event log of actions will be returned
     private JButton createExitButton() {
         JButton exit = new JButton("Exit");
         exit.setBounds(775, 30, 70, 30);

@@ -56,7 +56,7 @@ Sun Mar 31 21:25:49 PDT 2024
 Cart has been cleared
 
 **Phase 4: Task 3**
-My MainMenu class can be significantly improved by following the Single Responsbiltiy Principle. In this class, 
+My MainMenu class can be significantly improved by following the Single Responsibility Principle. In this class, 
 buttons, labels, event handling are all contained in one class. This violates SRP since the MainMenu class has 
 more than one responsibility. For the components such as buttons, labels, and frames, I could create a separate 
 class that is only responsible for creating these UI components. Within this class I would have methods called 

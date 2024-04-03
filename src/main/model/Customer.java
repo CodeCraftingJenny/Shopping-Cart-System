@@ -31,7 +31,7 @@ public class Customer implements Writable {
     }
 
     //MODIFIES: this
-    //EFFECTS: adds clothing item to customer's cart
+    //EFFECTS: adds clothing item to customer's cart, logs when action occurs
     public void addToCart(Clothing item) {
         this.cart.add(item);
         EventLog.getInstance().logEvent(new Event(item.getNameOfItem() + "-"
@@ -40,7 +40,7 @@ public class Customer implements Writable {
 
     //REQUIRES: shopping cart is not empty
     //MODIFIES: this
-    //EFFECTS: removes item in customer's cart
+    //EFFECTS: removes item in customer's cart, logs when action occurs
     public void removeInCart(Clothing item) {
         this.cart.remove(item);
         EventLog.getInstance().logEvent(new Event(item.getNameOfItem() + "-"
@@ -52,6 +52,7 @@ public class Customer implements Writable {
         return cart;
     }
 
+    //EFFECTS: returns an unmodifiable list of items in cart, logs when action occurs
     public List<Clothing> viewCartPage() {
         EventLog.getInstance().logEvent(new Event("Cart has been opened"));
         return Collections.unmodifiableList(cart);
@@ -68,7 +69,7 @@ public class Customer implements Writable {
 
     //REQUIRES: Cart to be not empty
     //MODIFIES: this
-    //EFFECTS: removes all items from cart
+    //EFFECTS: removes all items from cart, logs when action occurs
     public void emptyCart() {
         cart.clear();
         EventLog.getInstance().logEvent(new Event("Cart has been cleared"));
